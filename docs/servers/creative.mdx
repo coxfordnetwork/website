@@ -1,0 +1,30 @@
+---
+title: Creative Vanilla Foreverworld
+---
+
+import Address from '@site/src/components/Address'
+import Launchers from '@site/src/components/Launchers'
+import servers from '@site/src/data/servers'
+
+export const server = servers.find((s) => s.id === 'creative')
+
+# Creative Vanilla Foreverworld
+
+Creative building on a Paper server, Minecraft **{server.version}**. Vanilla — no modpack, nothing to install
+beyond the game itself.
+
+## Address
+
+<Address address={server.address} />
+
+## Quick join
+
+1. Launch Minecraft **{server.version}** (the official launcher is fine; Prism or the Modrinth App if you prefer):
+
+<Launchers />
+
+2. *Multiplayer → Add Server*, paste the address above. Join.
+
+Optional: Voxy distant terrain is supported server-side. On Windows/Linux, a Fabric {server.version} instance with
+[Sodium](https://modrinth.com/mod/sodium), [Voxy](https://modrinth.com/mod/voxy) and
+[LOD Server Support](https://modrinth.com/plugin/lod-server-support) gets it. Not on native macOS.

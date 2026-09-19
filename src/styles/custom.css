@@ -1,0 +1,164 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/*@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Open+Sans:wght@300;400;500;600;700&display=swap');*/
+
+/*
+ * One neutral gray scale for the whole site. The same hex values are given to
+ * daisyUI in tailwind.config.js — change them in both places together.
+ *
+ *            light      dark
+ *   bg       #ffffff    #111111
+ *   bg-2     #f5f5f5    #181818   surfaces: navbar, cards' hover, code
+ *   bg-3     #ebebeb    #222222   subtle fills
+ *   border   #e3e3e3    #2a2a2a
+ *   muted    #6f6f6f    #8f8f8f   secondary text
+ *   text     #171717    #ededed
+ */
+:root {
+  --ifm-font-family-base:
+    'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+
+  --ifm-color-primary: #171717;
+  --ifm-color-primary-dark: #111111;
+  --ifm-color-primary-darker: #0d0d0d;
+  --ifm-color-primary-darkest: #000000;
+  --ifm-color-primary-light: #2b2b2b;
+  --ifm-color-primary-lighter: #383838;
+  --ifm-color-primary-lightest: #525252;
+
+  --ifm-background-color: #ffffff;
+  --ifm-background-surface-color: #f5f5f5;
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-font-color-base: #171717;
+  --ifm-color-content-secondary: #6f6f6f;
+  --ifm-heading-color: #171717;
+
+  --ifm-color-emphasis-0: #ffffff;
+  --ifm-color-emphasis-100: #f5f5f5;
+  --ifm-color-emphasis-200: #ebebeb;
+  --ifm-color-emphasis-300: #e3e3e3;
+  --ifm-color-emphasis-400: #c7c7c7;
+  --ifm-color-emphasis-500: #a3a3a3;
+  --ifm-color-emphasis-600: #6f6f6f;
+  --ifm-color-emphasis-700: #525252;
+  --ifm-color-emphasis-800: #2b2b2b;
+  --ifm-color-emphasis-900: #171717;
+  --ifm-color-emphasis-1000: #000000;
+
+  --ifm-toc-border-color: #e3e3e3;
+  --ifm-hr-color: #e3e3e3;
+  --ifm-code-background: #f5f5f5;
+  --ifm-pre-background: #f5f5f5;
+  --ifm-menu-color: #525252;
+  --ifm-menu-color-active: #171717;
+  --ifm-menu-color-background-active: #f5f5f5;
+  --ifm-menu-color-background-hover: #f5f5f5;
+  --ifm-breadcrumb-color-active: #171717;
+  --ifm-navbar-shadow: none;
+  --ifm-global-shadow-lw: none;
+  --ifm-global-shadow-md: none;
+  --ifm-global-shadow-tl: none;
+}
+
+:root[data-theme='dark'] {
+  --ifm-color-primary: #ededed;
+  --ifm-color-primary-dark: #dcdcdc;
+  --ifm-color-primary-darker: #d0d0d0;
+  --ifm-color-primary-darkest: #b3b3b3;
+  --ifm-color-primary-light: #f5f5f5;
+  --ifm-color-primary-lighter: #fafafa;
+  --ifm-color-primary-lightest: #ffffff;
+
+  --ifm-background-color: #111111;
+  --ifm-background-surface-color: #181818;
+  --ifm-navbar-background-color: #111111;
+  --ifm-font-color-base: #ededed;
+  --ifm-color-content-secondary: #8f8f8f;
+  --ifm-heading-color: #ededed;
+
+  --ifm-color-emphasis-0: #111111;
+  --ifm-color-emphasis-100: #181818;
+  --ifm-color-emphasis-200: #222222;
+  --ifm-color-emphasis-300: #2a2a2a;
+  --ifm-color-emphasis-400: #3a3a3a;
+  --ifm-color-emphasis-500: #5c5c5c;
+  --ifm-color-emphasis-600: #8f8f8f;
+  --ifm-color-emphasis-700: #b3b3b3;
+  --ifm-color-emphasis-800: #d0d0d0;
+  --ifm-color-emphasis-900: #ededed;
+  --ifm-color-emphasis-1000: #ffffff;
+
+  --ifm-toc-border-color: #2a2a2a;
+  --ifm-hr-color: #2a2a2a;
+  --ifm-code-background: #181818;
+  --ifm-pre-background: #181818;
+  --ifm-menu-color: #b3b3b3;
+  --ifm-menu-color-active: #ededed;
+  --ifm-menu-color-background-active: #181818;
+  --ifm-menu-color-background-hover: #181818;
+  --ifm-breadcrumb-color-active: #ededed;
+}
+
+/* Infima's docs sidebar / navbar borders pick up the emphasis scale; keep them hairlines. */
+.navbar {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+/* https://github.com/facebook/jest/blob/main/website/src/css/docusaurusTheme.css */
+.header-github-link:hover {
+  opacity: 0.6;
+}
+
+.header-github-link:before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+[data-theme='dark'] .header-github-link:before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+.theme-doc-markdown a {
+  text-decoration: underline;
+}
+
+.theme-doc-markdown a:hover {
+  text-decoration-thickness: 2px;
+}
+
+button {
+  border-style: unset;
+}
+
+/* Stop Chrome from painting autofilled inputs with its own background color. */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  transition: background-color 9999999s ease-in-out 0s;
+  -webkit-text-fill-color: var(--ifm-font-color-base);
+  caret-color: var(--ifm-font-color-base);
+}
+
+/* Integrate tailwindcss. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.navbar .navbar__item {
+  @apply tw-px-4;
+}
+
+.hero {
+  @apply tw-py-12;
+}

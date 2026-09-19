@@ -1,0 +1,63 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ['./src/**/*.{js,jsx}'],
+  prefix: 'tw-',
+  darkMode: ['class', '[data-theme="dark"]'],
+  corePlugins: {
+    preflight: false,
+  },
+  plugins: [require('daisyui')],
+  daisyui: {
+    base: false,
+    logs: false,
+    // Same neutral scale as src/styles/custom.css — keep the two in sync.
+    themes: [
+      {
+        light: {
+          'color-scheme': 'light',
+          primary: '#171717',
+          'primary-content': '#ffffff',
+          secondary: '#525252',
+          'secondary-content': '#ffffff',
+          accent: '#171717',
+          'accent-content': '#ffffff',
+          neutral: '#2b2b2b',
+          'neutral-content': '#ffffff',
+          'base-100': '#ffffff',
+          'base-200': '#f5f5f5',
+          'base-300': '#e3e3e3',
+          'base-content': '#171717',
+          info: '#525252',
+          success: '#171717',
+          warning: '#525252',
+          error: '#6f6f6f',
+          '--rounded-btn': '0.5rem',
+          '--rounded-badge': '0.5rem',
+        },
+      },
+      {
+        dark: {
+          'color-scheme': 'dark',
+          primary: '#ededed',
+          'primary-content': '#111111',
+          secondary: '#b3b3b3',
+          'secondary-content': '#111111',
+          accent: '#ededed',
+          'accent-content': '#111111',
+          neutral: '#222222',
+          'neutral-content': '#ededed',
+          'base-100': '#111111',
+          'base-200': '#181818',
+          'base-300': '#2a2a2a',
+          'base-content': '#ededed',
+          info: '#b3b3b3',
+          success: '#ededed',
+          warning: '#b3b3b3',
+          error: '#8f8f8f',
+          '--rounded-btn': '0.5rem',
+          '--rounded-badge': '0.5rem',
+        },
+      },
+    ],
+  },
+}

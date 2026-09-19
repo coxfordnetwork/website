@@ -1,0 +1,70 @@
+/* stylelint-disable docusaurus/copyright-header */
+
+:global(.navbar) {
+  box-shadow: none;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Oversized static logo mark, barely visible, for depth on wide screens. */
+.cube {
+  position: absolute;
+  top: 50%;
+  right: 10rem;
+  transform: translateY(-50%) rotate(8deg);
+  width: 42rem;
+  height: 42rem;
+  opacity: 0.05;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 996px) {
+  .cube {
+    display: none;
+  }
+}
+
+.title {
+  font-family: 'Bricolage Grotesque', 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  max-width: 12ch;
+  margin: 0;
+}
+
+.title em {
+  font-style: normal;
+  opacity: 0.35;
+}
+
+.fadeUp {
+  animation: fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.delay1 {
+  animation-delay: 0.1s;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fadeUp {
+    animation: none;
+  }
+}

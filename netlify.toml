@@ -1,0 +1,14 @@
+[build]
+  command = "pnpm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "22"
+  PNPM_VERSION = "10.18.1"
+
+# Stable, short pack links for launcher import (Prism: Add Instance → Import → paste).
+# Each points at the pack's rolling "<pack>-latest" GitHub release, refreshed by the modpacks workflow.
+# [[redirects]]
+#   from = "/packs/my-pack.mrpack"
+#   to = "https://github.com/coxfordmc/modpacks/releases/download/my-pack-latest/my-pack.mrpack"
+#   status = 302

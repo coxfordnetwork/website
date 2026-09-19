@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Build artifacts
+build/
+.docusaurus/
+.cache-loader/
+
+# Netlify
+.netlify/
+
+# Misc
+.DS_Store
+.env
+.env.local
