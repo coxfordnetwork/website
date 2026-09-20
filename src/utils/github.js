@@ -24,6 +24,15 @@ export function primaryAsset(release) {
   return assets.find((a) => a.name.endsWith('.mrpack')) || assets[0] || null
 }
 
+/**
+ * One release asset by file extension, or null. Callers build their download
+ * menus from what this returns, so a format the build didn't produce simply
+ * doesn't appear rather than 404ing.
+ */
+export function assetByExt(release, ext) {
+  return (release.assets || []).find((a) => a.name.endsWith(ext)) || null
+}
+
 export function formatDate(iso) {
   return new Date(iso).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' })
 }

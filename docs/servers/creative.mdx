@@ -3,36 +3,22 @@ title: Creative Vanilla Foreverworld
 ---
 
 import Address from '@site/src/components/Address'
-import ModpackDownloads from '@site/src/components/ModpackDownloads'
+import InstanceTable from '@site/src/components/InstanceTable'
 import servers from '@site/src/data/servers'
 
 export const server = servers.find((s) => s.id === 'creative')
 
 # Creative Vanilla Foreverworld
 
-Creative building on a Paper server, Minecraft **{server.version}**. Vanilla — no modpack, nothing to install
-beyond the game itself.
-
-## Address
+Creative building on a Paper server, Minecraft **{server.version}**. Vanilla — nothing to install beyond the game
+itself. *Multiplayer → Add Server*, paste the address, join.
 
 <Address address={server.address} />
 
-## Quick join
+## Instances
 
-1. Launch Minecraft **{server.version}** — the official launcher is fine; Prism or the Modrinth App if you prefer, from the buttons in the header.
-2. *Multiplayer → Add Server*, paste the address above. Join.
+<InstanceTable serverId="creative" />
 
-Optional: Voxy distant terrain is supported server-side. On Windows/Linux, a Fabric {server.version} instance with
+Voxy distant terrain is supported server-side. On Windows/Linux, a Fabric {server.version} instance with
 [Sodium](https://modrinth.com/mod/sodium), [Voxy](https://modrinth.com/mod/voxy) and
 [LOD Server Support](https://modrinth.com/plugin/lod-server-support) gets it. Not on native macOS.
-
-## Optional: the shader preset
-
-Still nothing you need — the server is vanilla and plain Minecraft joins fine. This is a prepackaged Fabric
-instance for anyone who wants shaders without building one: Iris and Sodium, Complementary Unbound, Better
-Leaves, switched on out of the box.
-
-Copy the link below, then in **Prism** *Add Instance → Import* and paste it. The **Modrinth App** takes the same
-link.
-
-<ModpackDownloads modpackId="creative-preset" />

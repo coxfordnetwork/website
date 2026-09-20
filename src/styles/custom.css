@@ -199,6 +199,17 @@ input:-webkit-autofill:focus {
   padding: 0.5rem 0.75rem;
 }
 
+/*
+ * Drop the category crumb ("Servers") from the docs breadcrumbs. Docusaurus
+ * renders a category as a <span> rather than an <a>, so it isn't clickable, and
+ * it lands the reader in the same place the home crumb to its left already
+ * does. The home crumb and the current page keep their crumbs — the current
+ * page is the one carrying `--active`, and every real link has an <a>.
+ */
+.breadcrumbs__item:not(.breadcrumbs__item--active):not(:has(a)) {
+  display: none;
+}
+
 .hero {
   @apply tw-py-12;
 }

@@ -76,9 +76,6 @@ const config = {
             <a class="launcher-link" href="https://modrinth.com/app" target="_blank" rel="noopener noreferrer" title="Get the Modrinth App" aria-label="Get the Modrinth App">
               <img src="/img/logos/modrinth.svg" alt="Modrinth App" width="20" height="20" />
             </a>
-            <a class="launcher-link" href="https://www.curseforge.com/download/app" target="_blank" rel="noopener noreferrer" title="Get the CurseForge App" aria-label="Get the CurseForge App">
-              <img src="/img/logos/curseforge.svg" alt="CurseForge App" width="20" height="20" />
-            </a>
           </span>`,
         },
       ],

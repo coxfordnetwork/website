@@ -1,5 +1,5 @@
 /**
- * The list of servers shown on the homepage.
+ * The servers shown on the homepage.
  *
  * To add a server, append an entry here — it shows up on the homepage
  * automatically. Give it a docs page under docs/servers/ and list it in
@@ -9,15 +9,25 @@
  * - game:       'minecraft' (default) gets a live status check via the
  *               mcsrvstat.us public API. Any other value (e.g. 'beamng',
  *               'gta') skips the ping and just lists the address.
- * - version:    shown on the card even while the server is offline.
+ * - status:     'planned' holds the slot for a server that isn't up yet. The
+ *               card renders greyed out with *** in place of anything it can't
+ *               honestly report, and no ping is made. Drop the field to make
+ *               the card real — the data below it is already correct.
+ * - version:    the MINECRAFT version, and nothing else. It is only the
+ *               fallback for the card's badge: while the server is up the badge
+ *               shows what the ping actually reports, so a declared and a live
+ *               version can never sit next to each other. Pack versions belong
+ *               on the instance, not here.
  * - docs:       the server's documentation page (address, how to join).
- * - modpackId:  links the card to a pack defined in `modpacks.js`; the card
- *               embeds a download button for the pack's latest release.
- * - modpack:    for packs we don't build ourselves (CurseForge etc.):
- *               { name, version, url, source, download } — `download` is the
- *               direct file link for the pinned version (CurseForge:
- *               https://www.curseforge.com/api/v1/mods/<projectId>/files/<fileId>/download).
- *               Omit both for servers without a pack.
+ * - instances:  the client setups for this server, rendered as the table on its
+ *               doc page. Zero, one or several — a vanilla server can have
+ *               none, and nothing renders. Each is either
+ *                 { id, name, blurb?, modpackId }
+ *                   a pack we build; its files come from the latest release of
+ *                   the matching entry in modpacks.js, and the row offers
+ *                   whichever of .mrpack / .zip that release actually has.
+ *                 { id, name, blurb?, external: { version, url, download } }
+ *                   a pack someone else publishes; the row offers that link.
  */
 const servers = [
   {
@@ -27,32 +37,55 @@ const servers = [
     version: '26.2',
     description: 'build cool shit and shit. find out why this server isnt boring by joining it',
     docs: '/docs/servers/creative/',
+    instances: [
+      {
+        id: 'creative-preset',
+        name: 'Shader preset',
+        blurb: 'Optional — the server is vanilla and plain Minecraft joins fine. Iris and Sodium with Complementary Unbound, on out of the box.',
+        modpackId: 'creative-preset',
+      },
+    ],
   },
   {
     id: 'atm11',
     name: 'Modded Survival ATM11',
     address: 'atm11.coxford.net',
-    version: '0.6.0-beta',
+    // TODO: the Minecraft version ATM11 0.6.0-beta runs on. Only used as the
+    // badge's fallback while the server is unreachable; 0.6.0-beta is the
+    // pack's version and lives on the instance below.
+    version: null,
     description: 'all the mods are installed! jk, that would be impossible. it is just the modpack name.',
     docs: '/docs/servers/atm11/',
-    modpack: {
-      name: 'All the Mods 11',
-      version: '0.6.0-beta',
-      url: 'https://www.curseforge.com/minecraft/modpacks/all-the-mods-11',
-      source: 'CurseForge',
-      // project 1148445, file 8700161 = 0.6.0-beta
-      download: 'https://www.curseforge.com/api/v1/mods/1148445/files/8700161/download',
-    },
+    instances: [
+      {
+        id: 'atm11',
+        name: 'All the Mods 11',
+        blurb: 'Required, on exactly this version — anything else is refused on connect.',
+        external: {
+          version: '0.6.0-beta',
+          url: 'https://www.curseforge.com/minecraft/modpacks/all-the-mods-11',
+          // project 1148445, file 8700161 = 0.6.0-beta
+          download: 'https://www.curseforge.com/api/v1/mods/1148445/files/8700161/download',
+        },
+      },
+    ],
   },
-  // // Non-Minecraft servers work too, e.g.:
-  // {
-  //   id: 'beamng',
-  //   name: 'BeamNG',
-  //   game: 'beamng',
-  //   address: 'beamng.coxford.net',
-  //   description: 'BeamNG.drive multiplayer.',
-  //   docs: '/docs/servers/beamng/',
-  // },
+  {
+    id: 'beta173',
+    name: 'Beta 1.7.3',
+    address: 'beta.coxford.net',
+    version: 'b1.7.3',
+    description: 'the old one — era-appropriate, working skins, nothing built after 2011.',
+    status: 'planned',
+  },
+  {
+    id: 'beamng',
+    name: 'BeamNG',
+    game: 'beamng',
+    address: 'beamng.coxford.net',
+    description: 'BeamNG.drive multiplayer.',
+    status: 'planned',
+  },
 ]
 
 export default servers

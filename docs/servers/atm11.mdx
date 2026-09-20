@@ -3,29 +3,21 @@ title: Modded Survival ATM11
 ---
 
 import Address from '@site/src/components/Address'
+import InstanceTable from '@site/src/components/InstanceTable'
 import servers from '@site/src/data/servers'
 
 export const server = servers.find((s) => s.id === 'atm11')
 
 # Modded Survival ATM11
 
-Survival on [All the Mods 11](https://www.curseforge.com/minecraft/modpacks/all-the-mods-11), NeoForge. You need
-the pack on **exactly {server.modpack.version}** — other versions are refused on connect.
+Survival on [All the Mods 11](https://www.curseforge.com/minecraft/modpacks/all-the-mods-11), NeoForge. Grab the
+instance below, then *Multiplayer → Add Server* and paste the address.
 
-## Address & modpack
+<Address address={server.address} />
 
-<Address address={server.address} modpack={server.modpack} />
+## Instances
 
-## Quick join
+<InstanceTable serverId="atm11" />
 
-1. Get a launcher — Prism, Modrinth or CurseForge, from the buttons in the header.
-2. Install the pack:
-   - **Prism:** *Add Instance → Import*, paste the copied link above (or pick the downloaded zip). Prism reads the
-     CurseForge pack and fetches the mods; a few may open in your browser if their authors block third-party
-     downloads — drop those into the instance's mods folder. Alternatively *Add Instance → CurseForge*, search
-     **All the Mods 11**, pick **{server.modpack.version}**.
-   - **CurseForge app:** install from the pack page, choose version **{server.modpack.version}**.
-   - **Modrinth App:** can't install CurseForge packs; use one of the above.
-3. Launch, *Multiplayer → Add Server*, paste the address above.
-
-Give it a minute on first launch — it's a big pack. 8 GB of RAM allocated to the instance is a good place to start.
+In Prism, *Add Instance → Import* takes the copied link directly. Give it a minute on first launch — it's a big
+pack, and 8 GB of RAM allocated to the instance is a good place to start.
