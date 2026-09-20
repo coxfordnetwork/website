@@ -1,6 +1,5 @@
 # coxford.net
-
-Website for the coxford Minecraft servers. Docusaurus, deployed on Netlify.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2f78fc7a-bd11-4db7-a5b8-6dc0477d7c7f/deploy-status)](https://app.netlify.com/projects/coxford/deploys)
 
 ```bash
 pnpm install
