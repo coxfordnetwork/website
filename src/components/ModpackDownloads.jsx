@@ -57,10 +57,25 @@ export default function ModpackDownloads({ modpackId }) {
   const [error, setError] = useState(false)
 
   useEffect(() => {
+    if (!modpack) {
+      return
+    }
+
     fetchReleases(modpack)
       .then(setReleases)
       .catch(() => setError(true))
   }, [modpack])
+
+  // A typo'd or not-yet-added id would otherwise take the whole page down.
+  if (!modpack) {
+    return (
+      <Card>
+        <p className="tw-m-0">
+          Unknown modpack <code>{modpackId}</code> — add it to <code>src/data/modpacks.js</code>.
+        </p>
+      </Card>
+    )
+  }
 
   const releasesUrl = `https://github.com/${modpack.repo}/releases`
   const latest = releases?.[0]
