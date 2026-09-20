@@ -1,0 +1,29 @@
+---
+title: Beta 1.7.3
+---
+
+import Address from '@site/src/components/Address'
+import servers from '@site/src/data/servers'
+
+export const server = servers.find((s) => s.id === 'beta173')
+
+# Beta 1.7.3
+
+Minecraft Beta 1.7.3 — September 2011, nothing built after it. Skins are handled server-side, so they work without
+anything on your end.
+
+Not up yet; the address is reserved and this page is here ahead of it.
+
+<Address server={server} />
+
+## Joining
+
+Nothing to download for this one. Beta 1.7.3 predates Modrinth, Fabric and the `mods/` folder entirely, and its
+mods are patched straight into `minecraft.jar` — no modern pack format can express that, so there's no instance to
+import. Setup is manual, and you only do it once:
+
+1. In Prism, *Add Instance → Custom*, and pick **Beta 1.7.3** from the version list.
+2. Launch it once so the files unpack, then close it.
+3. *Multiplayer → Add Server*, paste the address above.
+
+The client is plain b1.7.3 — everything era-appropriate lives on the server side.

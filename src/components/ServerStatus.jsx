@@ -1,35 +1,12 @@
 import Link from '@docusaurus/Link'
 import { clsx } from 'clsx'
-import { useEffect, useState } from 'react'
 import servers from '../data/servers'
+import { displayVersion, playerCount, useServerStatus } from '../utils/serverStatus'
 import Card from './Card'
 import CopyButton from './CopyButton'
+import StatusBadge from './StatusBadge'
 
 const MASK = '***'
-
-function StatusBadge({ status }) {
-  if (status === 'planned') {
-    return <span className="tw-badge tw-badge-outline tw-gap-2">Planned</span>
-  }
-
-  if (status === 'loading') {
-    return <span className="tw-badge tw-badge-ghost tw-gap-2">Checking…</span>
-  }
-
-  if (status === 'online') {
-    return (
-      <span className="tw-badge tw-badge-primary tw-gap-2">
-        <span className="tw-relative tw-flex tw-h-2 tw-w-2">
-          <span className="tw-animate-ping tw-absolute tw-inline-flex tw-h-full tw-w-full tw-rounded-full tw-bg-primary-content tw-opacity-75" />
-          <span className="tw-relative tw-inline-flex tw-rounded-full tw-h-2 tw-w-2 tw-bg-primary-content" />
-        </span>
-        Online
-      </span>
-    )
-  }
-
-  return <span className="tw-badge tw-badge-outline tw-gap-2 tw-opacity-70">Offline</span>
-}
 
 /**
  * Every card carries the same things in the same places — name, version,
@@ -39,53 +16,21 @@ function StatusBadge({ status }) {
  * the one beside it.
  *
  * A `planned` server keeps its slot in the grid and masks anything it can't
- * honestly report. Nothing is pinged and no link is offered, but the space is
- * held so the grid doesn't reflow when the server goes live.
+ * honestly report, but still links to its page — the page is where you say what
+ * the thing is going to be.
  */
 function ServerCard({ server }) {
+  const { status, info } = useServerStatus(server)
   const planned = server.status === 'planned'
-  const isMinecraft = !planned && (!server.game || server.game === 'minecraft')
-  const [status, setStatus] = useState(planned ? 'planned' : isMinecraft ? 'loading' : 'none')
-  const [info, setInfo] = useState(null)
-
-  useEffect(() => {
-    if (!isMinecraft) {
-      return undefined
-    }
-
-    let cancelled = false
-
-    fetch(`https://api.mcsrvstat.us/3/${server.address}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (cancelled) {
-          return
-        }
-
-        setStatus(data.online ? 'online' : 'offline')
-        setInfo(data)
-      })
-      .catch(() => {
-        if (!cancelled) {
-          setStatus('offline')
-        }
-      })
-
-    return () => {
-      cancelled = true
-    }
-  }, [server.address, isMinecraft])
-
-  // One version, never two. What the server actually reports wins; the declared
-  // version in servers.js is only the fallback for when we can't reach it.
-  const version = (status === 'online' && info?.version) || server.version || null
+  const version = displayVersion(server, status, info)
+  const players = playerCount(status, info)
 
   return (
     <Card className={clsx('tw-flex tw-flex-col tw-gap-3', planned && 'tw-opacity-50')}>
       <div className="tw-flex tw-items-center tw-justify-between tw-gap-3">
         <div className="tw-flex tw-items-center tw-gap-2">
           <h3 className="tw-m-0">
-            {server.docs && !planned ? (
+            {server.docs ? (
               <Link to={server.docs} className="tw-text-base-content hover:tw-underline">
                 {server.name}
               </Link>
@@ -95,7 +40,7 @@ function ServerCard({ server }) {
           </h3>
           {version && <span className="tw-badge tw-badge-ghost">{version}</span>}
         </div>
-        {status !== 'none' && <StatusBadge status={status} />}
+        <StatusBadge status={status} />
       </div>
 
       <div className="tw-flex tw-items-center tw-gap-1">
@@ -111,18 +56,15 @@ function ServerCard({ server }) {
         <div
           className={clsx(
             'tw-flex tw-gap-6 tw-text-sm tw-font-medium tw-transition-opacity',
-            planned || status === 'online' ? 'tw-opacity-100' : 'tw-opacity-0',
+            planned || players ? 'tw-opacity-100' : 'tw-opacity-0',
           )}
         >
           <span>
-            <span className="tw-font-bold">
-              {planned ? MASK : info?.players ? `${info.players.online} / ${info.players.max}` : '—'}
-            </span>{' '}
-            players
+            <span className="tw-font-bold">{planned ? MASK : players || '—'}</span> players
           </span>
         </div>
         <div className="tw-flex tw-items-center tw-gap-3">
-          {server.docs && !planned && (
+          {server.docs && (
             <Link to={server.docs} className="tw-text-sm tw-underline dark:tw-no-underline tw-whitespace-nowrap">
               See more
             </Link>

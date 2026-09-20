@@ -76,15 +76,31 @@ const servers = [
     address: 'beta.coxford.net',
     version: 'b1.7.3',
     description: 'the old one — era-appropriate, working skins, nothing built after 2011.',
+    docs: '/docs/servers/beta173/',
     status: 'planned',
+    // No instances on purpose: b1.7.3 predates Modrinth, Fabric and the mods/
+    // folder, and its mods are patched into minecraft.jar, which no pack format
+    // can express. The page walks through the manual Prism setup instead.
   },
   {
     id: 'beamng',
     name: 'BeamNG',
     game: 'beamng',
     address: 'beamng.coxford.net',
-    description: 'BeamNG.drive multiplayer.',
+    description: 'BeamNG.drive multiplayer over BeamMP.',
+    docs: '/docs/servers/beamng/',
     status: 'planned',
+    instances: [
+      {
+        id: 'beammp',
+        name: 'BeamMP launcher',
+        blurb: 'Required. Patches BeamNG.drive for multiplayer and handles joining. You need the game on Steam first.',
+        external: {
+          url: 'https://beammp.com/',
+          download: 'https://beammp.com/installer/BeamMP_Installer.zip',
+        },
+      },
+    ],
   },
 ]
 

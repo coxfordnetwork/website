@@ -55,7 +55,7 @@ function CopyAction({ text, label, onDone }) {
  * latest release has attached, an external pack offers the single link it
  * publishes. Nothing in the menu is ever a dead entry.
  */
-function InstanceRow({ instance }) {
+function InstanceRow({ instance, minecraft }) {
   const modpack = instance.modpackId ? modpacks.find((m) => m.id === instance.modpackId) : null
   const [release, setRelease] = useState(null)
   const [failed, setFailed] = useState(false)
@@ -177,7 +177,13 @@ function InstanceRow({ instance }) {
                   'tw-flex tw-flex-col tw-py-1 tw-rounded-xl tw-border tw-border-solid tw-border-base-300 tw-bg-base-100',
                 )}
               >
-                <CopyAction text={primaryUrl} label="Copy link (Prism)" onDone={() => setOpen(false)} />
+                {/* Prism is a Minecraft launcher, so it's only named on a
+                    Minecraft server's page. */}
+                <CopyAction
+                  text={primaryUrl}
+                  label={minecraft ? 'Copy link (Prism)' : 'Copy link'}
+                  onDone={() => setOpen(false)}
+                />
                 {actions.map((a) => (
                   <Link
                     key={a.key}
@@ -206,6 +212,7 @@ function InstanceRow({ instance }) {
 export default function InstanceTable({ serverId }) {
   const server = servers.find((s) => s.id === serverId)
   const instances = server?.instances || []
+  const minecraft = !server?.game || server.game === 'minecraft'
 
   if (instances.length === 0) {
     return null
@@ -214,7 +221,7 @@ export default function InstanceTable({ serverId }) {
   return (
     <div className="tw-my-6 tw-border-0 tw-border-t tw-border-solid tw-border-base-300">
       {instances.map((instance) => (
-        <InstanceRow key={instance.id} instance={instance} />
+        <InstanceRow key={instance.id} instance={instance} minecraft={minecraft} />
       ))}
     </div>
   )

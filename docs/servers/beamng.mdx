@@ -1,0 +1,26 @@
+---
+title: BeamNG
+---
+
+import Address from '@site/src/components/Address'
+import InstanceTable from '@site/src/components/InstanceTable'
+import servers from '@site/src/data/servers'
+
+export const server = servers.find((s) => s.id === 'beamng')
+
+# BeamNG
+
+BeamNG.drive multiplayer over [BeamMP](https://beammp.com/). You need the game on Steam, plus the launcher below —
+it patches BeamNG for multiplayer and handles joining.
+
+Not up yet; the address is reserved and this page is here ahead of it.
+
+<Address server={server} />
+
+## Instances
+
+<InstanceTable serverId="beamng" />
+
+Run the installer, start the launcher, and it opens BeamNG with multiplayer enabled. The address above goes in
+under *Direct Connect*. BeamMP isn't a Minecraft server, so there's no live status or player count for it here —
+the launcher's own server list is the place to check.
