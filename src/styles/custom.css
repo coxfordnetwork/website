@@ -159,6 +159,46 @@ input:-webkit-autofill:focus {
   @apply tw-px-4;
 }
 
+/*
+ * The three launcher buttons in the navbar (Prism, Modrinth, CurseForge).
+ * Square hit areas sized to sit level with the "Docs" item, logos in their own
+ * colors so each one is recognizable at this size.
+ */
+.launcher-links {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.launcher-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  opacity: 0.85;
+  transition:
+    opacity 150ms ease,
+    background-color 150ms ease;
+}
+
+.launcher-link:hover {
+  opacity: 1;
+  background-color: var(--ifm-color-emphasis-200);
+}
+
+.launcher-link img {
+  display: block;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* In the collapsed mobile menu the row sits inside a full-width list item. */
+.menu__list-item > .launcher-links {
+  padding: 0.5rem 0.75rem;
+}
+
 .hero {
   @apply tw-py-12;
 }

@@ -1,6 +1,5 @@
 module.exports = {
   docs: [
-    'faqs',
     {
       type: 'category',
       label: 'Servers',

@@ -3,7 +3,6 @@ title: Modded Survival ATM11
 ---
 
 import Address from '@site/src/components/Address'
-import Launchers from '@site/src/components/Launchers'
 import servers from '@site/src/data/servers'
 
 export const server = servers.find((s) => s.id === 'atm11')
@@ -19,10 +18,7 @@ the pack on **exactly {server.modpack.version}** — other versions are refused 
 
 ## Quick join
 
-1. Get a launcher:
-
-<Launchers />
-
+1. Get a launcher — Prism, Modrinth or CurseForge, from the buttons in the header.
 2. Install the pack:
    - **Prism:** *Add Instance → Import*, paste the copied link above (or pick the downloaded zip). Prism reads the
      CurseForge pack and fetches the mods; a few may open in your browser if their authors block third-party

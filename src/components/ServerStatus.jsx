@@ -1,9 +1,7 @@
 import Link from '@docusaurus/Link'
 import { clsx } from 'clsx'
 import { useEffect, useState } from 'react'
-import modpacks from '../data/modpacks'
 import servers from '../data/servers'
-import { fetchReleases, primaryAsset } from '../utils/github'
 import Card from './Card'
 import CopyButton from './CopyButton'
 
@@ -27,29 +25,13 @@ function StatusBadge({ status }) {
   return <span className="tw-badge tw-badge-outline tw-gap-2 tw-opacity-70">Offline</span>
 }
 
-/** Direct download button for the latest release of the server's modpack. */
-function ModpackDownload({ modpackId, fallbackTo }) {
-  const modpack = modpacks.find((m) => m.id === modpackId)
-  const [release, setRelease] = useState(null)
-
-  useEffect(() => {
-    fetchReleases(modpack)
-      .then((releases) => setRelease(releases[0] || null))
-      .catch(() => {})
-  }, [modpack])
-
-  const asset = release ? primaryAsset(release) : null
-
-  return (
-    <Link
-      to={asset ? asset.browser_download_url : fallbackTo}
-      className="tw-btn tw-btn-sm !tw-btn-primary tw-whitespace-nowrap"
-    >
-      {asset ? `Get the modpack ${release.tag_name} ↓` : 'Get the modpack →'}
-    </Link>
-  )
-}
-
+/**
+ * Every card carries the same things in the same places — name, version,
+ * status, IP, blurb, player count, Quick Setup — whether the server is vanilla,
+ * runs a pack we build, or runs one from CurseForge. Pack downloads live on the
+ * server's own doc page, behind Quick Setup, so one card can't end up taller or
+ * busier than the one beside it.
+ */
 function ServerCard({ server }) {
   const isMinecraft = !server.game || server.game === 'minecraft'
   const [status, setStatus] = useState(isMinecraft ? 'loading' : 'none')
@@ -126,15 +108,6 @@ function ServerCard({ server }) {
           {server.docs && (
             <Link to={server.docs} className="tw-text-sm tw-underline dark:tw-no-underline tw-whitespace-nowrap">
               Quick Setup
-            </Link>
-          )}
-          {server.modpackId && <ModpackDownload modpackId={server.modpackId} fallbackTo={server.docs} />}
-          {server.modpack && (
-            <Link
-              to={server.modpack.download || server.modpack.url}
-              className="tw-btn tw-btn-sm !tw-btn-primary tw-whitespace-nowrap"
-            >
-              Get the modpack {server.modpack.version} {server.modpack.download ? '↓' : '→'}
             </Link>
           )}
         </div>

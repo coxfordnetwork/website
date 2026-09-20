@@ -16,7 +16,7 @@ const config = {
   url: 'https://coxford.net',
   baseUrl: '/',
 
-  organizationName: 'coxfordmc',
+  organizationName: 'coxfordnetwork',
   projectName: 'website',
 
   onBrokenLinks: 'throw',
@@ -59,8 +59,28 @@ const config = {
         src: 'img/logos/coxford.svg',
       },
       items: [
-        { to: 'docs', label: 'Docs', position: 'right' },
-    
+        // faqs.md carried `slug: /`, so it was the /docs/ index; with it gone
+        // there's no bare /docs/ route. docSidebar points at whatever sits
+        // first in the `docs` sidebar, so this keeps working as pages move.
+        { type: 'docSidebar', sidebarId: 'docs', label: 'Docs', position: 'right' },
+        {
+          // Launcher downloads, in place of the launcher cards that used to be
+          // repeated on every server page. Styles live in src/styles/custom.css
+          // under `.launcher-link`; the logos are in static/img/logos/.
+          type: 'html',
+          position: 'right',
+          value: `<span class="launcher-links">
+            <a class="launcher-link" href="https://prismlauncher.org/download/" target="_blank" rel="noopener noreferrer" title="Get Prism Launcher" aria-label="Get Prism Launcher">
+              <img src="/img/logos/prismlauncher.svg" alt="Prism Launcher" width="20" height="20" />
+            </a>
+            <a class="launcher-link" href="https://modrinth.com/app" target="_blank" rel="noopener noreferrer" title="Get the Modrinth App" aria-label="Get the Modrinth App">
+              <img src="/img/logos/modrinth.svg" alt="Modrinth App" width="20" height="20" />
+            </a>
+            <a class="launcher-link" href="https://www.curseforge.com/download/app" target="_blank" rel="noopener noreferrer" title="Get the CurseForge App" aria-label="Get the CurseForge App">
+              <img src="/img/logos/curseforge.svg" alt="CurseForge App" width="20" height="20" />
+            </a>
+          </span>`,
+        },
       ],
     },
     prism: {
