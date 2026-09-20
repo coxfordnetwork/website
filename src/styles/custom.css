@@ -110,6 +110,15 @@
   border-bottom: 1px solid var(--ifm-toc-border-color);
 }
 
+/*
+ * Infima hardcodes the navbar mark to 2rem — there's no variable for it — and
+ * at that size it overpowers the 1rem wordmark beside it.
+ */
+.navbar__logo,
+.navbar__logo img {
+  height: 1.5rem;
+}
+
 /* https://github.com/facebook/jest/blob/main/website/src/css/docusaurusTheme.css */
 .header-github-link:hover {
   opacity: 0.6;

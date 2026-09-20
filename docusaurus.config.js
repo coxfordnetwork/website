@@ -55,8 +55,12 @@ const config = {
       hideOnScroll: true,
       title: 'coxford network',
       logo: {
+        // Two files rather than one: the mark is a flat silhouette, and the
+        // site's theme toggle is its own switch, so it can't be a media query
+        // inside the SVG the way the favicon's is.
         alt: 'coxford',
-        src: 'img/logos/coxford.svg',
+        src: 'img/logos/coxford-light.svg',
+        srcDark: 'img/logos/coxford-dark.svg',
       },
       items: [
         // faqs.md carried `slug: /`, so it was the /docs/ index; with it gone
