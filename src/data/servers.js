@@ -32,10 +32,10 @@
 const servers = [
   {
     id: 'creative',
-    name: 'Creative Vanilla Foreverworld',
-    address: 'creative.coxford.net',
-    version: '26.2',
-    description: 'build cool shit and shit. find out why this server isnt boring by joining it',
+    name: 'Coxford Network (Vanilla)',
+    address: 'mc.coxford.net',
+    version: '1.8-26.3',
+    description: 'survival, creative, parkour, and tnt run',
     docs: '/docs/servers/creative/',
     instances: [
       {
