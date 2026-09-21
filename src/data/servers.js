@@ -6,9 +6,9 @@
  * sidebars.js.
  *
  * Fields:
- * - game:       'minecraft' (default) gets a live status check via the
- *               mcsrvstat.us public API. Any other value (e.g. 'beamng',
- *               'gta') skips the ping and just lists the address.
+ * - game:       kept for the (currently disabled) live status check; see
+ *               LIVE_STATUS in utils/serverStatus.js. Nothing is pinged today,
+ *               so this only documents what a server is.
  * - status:     'planned' holds the slot for a server that isn't up yet. The
  *               card renders greyed out with *** in place of anything it can't
  *               honestly report, and no ping is made. Drop the field to make
@@ -28,6 +28,11 @@
  *                   whichever of .mrpack / .zip that release actually has.
  *                 { id, name, blurb?, external: { version, url, download } }
  *                   a pack someone else publishes; the row offers that link.
+ *               Add `copyOnly: true` (with an optional `copyLabel`) when the file
+ *               is only useful pasted into a launcher rather than downloaded — a
+ *               MultiMC/Prism instance zip. The row then shows one copy button
+ *               instead of the split Download menu, so it never offers a .mrpack
+ *               or .zip entry that would not actually work.
  */
 const servers = [
   {
@@ -53,10 +58,28 @@ const servers = [
     version: 'Beta 1.7.3',
     description: 'Classic Survival Minecraft (with quality of life enhancements)',
     docs: '/docs/servers/beta173/',
-    status: 'planned',
-    // No instances on purpose: b1.7.3 predates Modrinth, Fabric and the mods/
-    // folder, and its mods are patched into minecraft.jar, which no pack format
-    // can express. The page walks through the manual Prism setup instead.
+    // Not 'minecraft', so the card skips the live ping. Not a quirk of ours:
+    // b1.7.3 answers the pre-2013 server-list ping, which mcsrvstat.us and every
+    // other status API do not speak, so a live server would be reported offline
+    // forever. The card lists the address instead.
+    game: 'minecraft-legacy',
+    instances: [
+      {
+        id: 'beta173-nostalgia',
+        name: 'Beta 1.7.3 - Nostalgia',
+        blurb: 'Required. ModLoader, WorldEdit and the b1.7.3 compatibility fixes, already patched in.',
+        // A MultiMC/Prism instance, NOT a .mrpack, and there is no .mrpack to
+        // offer: b1.7.3 mods are patched into minecraft.jar, which no modern
+        // pack format can express. Prism imports it from a pasted link, so the
+        // row offers the link and nothing else.
+        copyOnly: true,
+        copyLabel: 'Copy instance link',
+        external: {
+          url: 'https://github.com/coxfordnetwork/modpacks/tree/Beta-1.7.3-Nostalgia',
+          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/Beta-1.7.3-Nostalgia.zip',
+        },
+      },
+    ],
   },
     {
     id: 'atm11',

@@ -47,6 +47,26 @@ function CopyAction({ text, label, onDone }) {
   )
 }
 
+/** A primary button that copies to the clipboard and confirms in place. */
+function CopyButton({ text, label }) {
+  const [copied, setCopied] = useState(false)
+
+  return (
+    <button
+      type="button"
+      className="tw-btn tw-btn-sm !tw-btn-primary tw-whitespace-nowrap"
+      onClick={() => {
+        navigator.clipboard.writeText(text).then(() => {
+          setCopied(true)
+          setTimeout(() => setCopied(false), 1200)
+        })
+      }}
+    >
+      {copied ? 'Copied \u2713' : label}
+    </button>
+  )
+}
+
 /**
  * One instance: its name on the left, a split download button on the right.
  *
@@ -146,7 +166,15 @@ function InstanceRow({ instance, minecraft }) {
           </span>
         )}
 
-        {primaryUrl && (
+        {/* copyOnly: the file is a MultiMC/Prism instance zip, only useful
+            pasted into the launcher's importer. A "Download" button would hand
+            people a zip that nothing opens by double-clicking, and there is no
+            .mrpack to list beside it. One button, no menu. */}
+        {primaryUrl && instance.copyOnly && (
+          <CopyButton text={primaryUrl} label={instance.copyLabel || 'Copy link'} />
+        )}
+
+        {primaryUrl && !instance.copyOnly && (
           <>
             <div className="tw-join">
               {/* `!tw-no-underline` beats `.theme-doc-markdown a`, which would

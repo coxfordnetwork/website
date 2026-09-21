@@ -3,27 +3,32 @@ title: Beta 1.7.3
 ---
 
 import Address from '@site/src/components/Address'
+import InstanceTable from '@site/src/components/InstanceTable'
 import servers from '@site/src/data/servers'
 
 export const server = servers.find((s) => s.id === 'beta173')
 
 # Beta 1.7.3
 
-Minecraft Beta 1.7.3 — September 2011, nothing built after it. Skins are handled server-side, so they work without
-anything on your end.
-
-Not up yet; the address is reserved and this page is here ahead of it.
+Minecraft Beta 1.7.3 — September 2011, nothing built after it. Skins are handled server-side, so they work
+without anything on your end.
 
 <Address server={server} />
 
 ## Joining
 
-Nothing to download for this one. Beta 1.7.3 predates Modrinth, Fabric and the `mods/` folder entirely, and its
-mods are patched straight into `minecraft.jar` — no modern pack format can express that, so there's no instance to
-import. Setup is manual, and you only do it once:
+1. Copy the instance link below.
+2. In **Prism Launcher**: *Add Instance → Import → From zip*, paste the link, **OK**.
+3. Launch it once, then *Multiplayer → Add Server* and paste the address above.
 
-1. In Prism, *Add Instance → Custom*, and pick **Beta 1.7.3** from the version list.
-2. Launch it once so the files unpack, then close it.
-3. *Multiplayer → Add Server*, paste the address above.
+<InstanceTable serverId="beta173" />
 
-The client is plain b1.7.3 — everything era-appropriate lives on the server side.
+That's the whole setup. The instance pins Beta 1.7.3 and already has ModLoader, WorldEdit and the
+compatibility fixes patched in, so there is nothing else to install and no Java to pick.
+
+Import it, don't unzip it. This is a **MultiMC-format instance**, not a `.mrpack` — Prism and MultiMC
+read it, the Modrinth App does not. There is no `.mrpack` version and there can't be: Beta 1.7.3 mods are
+patched straight into `minecraft.jar`, which no modern pack format can describe.
+
+The address needs no port. Beta 1.7.3 ignores SRV records and always assumes the default port, so this
+server is the one that owns it.

@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react'
 
 /**
- * Live status for one server, shared by the homepage cards and the server doc
- * pages so the two can never disagree about what's up.
+ * Live status is OFF. Nothing on the site pings a server any more.
+ *
+ * Set LIVE_STATUS back to true to bring it back — the ping, the Online/Offline
+ * pill and the player counts all hang off this one flag, and the call sites
+ * already handle 'none' by rendering nothing.
  *
  * `status` is one of:
  *   'planned'  the server doesn't exist yet — nothing is pinged
- *   'none'     not a Minecraft server, so there's nothing we can ping
- *   'loading' | 'online' | 'offline'
+ *   'none'     nothing to report (what every real server returns while off)
+ *   'loading' | 'online' | 'offline'   only reachable with LIVE_STATUS on
  */
+const LIVE_STATUS = false
+
 export function useServerStatus(server) {
   const planned = server?.status === 'planned'
-  const pingable = Boolean(server) && !planned && (!server.game || server.game === 'minecraft')
+  const pingable =
+    LIVE_STATUS && Boolean(server) && !planned && (!server.game || server.game === 'minecraft')
   const [status, setStatus] = useState(planned ? 'planned' : pingable ? 'loading' : 'none')
   const [info, setInfo] = useState(null)
 
