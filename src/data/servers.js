@@ -105,26 +105,34 @@ const servers = [
       },
     ],
   },
-  {
-    id: 'beamng',
-    name: 'BeamNG - Multiplayer (Modded)',
-    game: 'beamng',
-    address: 'beamng.coxford.net',
-    description: 'BeamNG.drive multiplayer over BeamMP.',
-    docs: '/docs/servers/beamng/',
-    status: 'planned',
-    instances: [
-      {
-        id: 'beammp',
-        name: 'BeamMP launcher',
-        blurb: 'Required! Patches BeamNG.drive for multiplayer (fyi, you need the game on Steam first).',
-        external: {
-          url: 'https://beammp.com/',
-          download: 'https://beammp.com/installer/BeamMP_Installer.zip',
-        },
-      },
-    ],
-  },
+  // BeamNG is parked until the server actually exists. To bring it back:
+  //   1. uncomment this entry
+  //   2. rename docs/servers/_beamng.mdx -> beamng.mdx (Docusaurus ignores
+  //      files prefixed with an underscore, which is what keeps the page out
+  //      of the build while this entry is gone -- the page does
+  //      servers.find(id === 'beamng') and would fail on undefined)
+  //   3. put 'servers/beamng' back in sidebars.js
+  //
+  // {
+  //   id: 'beamng',
+  //   name: 'BeamNG - Multiplayer (Modded)',
+  //   game: 'beamng',
+  //   address: 'beamng.coxford.net',
+  //   description: 'BeamNG.drive multiplayer over BeamMP.',
+  //   docs: '/docs/servers/beamng/',
+  //   status: 'planned',
+  //   instances: [
+  //     {
+  //       id: 'beammp',
+  //       name: 'BeamMP launcher',
+  //       blurb: 'Required! Patches BeamNG.drive for multiplayer (fyi, you need the game on Steam first).',
+  //       external: {
+  //         url: 'https://beammp.com/',
+  //         download: 'https://beammp.com/installer/BeamMP_Installer.zip',
+  //       },
+  //     },
+  //   ],
+  // },
 ]
 
 export default servers
