@@ -6,6 +6,10 @@
  * sidebars.js.
  *
  * Fields:
+ * - platform:   the badge before the version — 'Minecraft', 'BeamNG'. It says
+ *               what the thing runs on, so the name doesn't have to: the card
+ *               reads `Minecraft` `26.2`  Coxford Network (Vanilla), not
+ *               "Minecraft - Coxford Network".
  * - game:       kept for the (currently disabled) live status check; see
  *               LIVE_STATUS in utils/serverStatus.js. Nothing is pinged today,
  *               so this only documents what a server is.
@@ -39,7 +43,8 @@
 const servers = [
   {
     id: 'creative',
-    name: 'Minecraft - Coxford Network (Vanilla)',
+    name: 'Coxford Network (Vanilla)',
+    platform: 'Minecraft',
     address: 'mc.coxford.net',
     version: '1.8-26.3',
     description: 'survival, creative, parkour, and tnt run',
@@ -55,7 +60,8 @@ const servers = [
   },
   {
     id: 'beta173',
-    name: 'Minecraft - Beta 1.7.3 (Vanilla)',
+    name: 'Beta 1.7.3 (Vanilla)',
+    platform: 'Minecraft',
     address: 'beta.coxford.net',
     version: 'Beta 1.7.3',
     description: '',
@@ -85,7 +91,8 @@ const servers = [
   },
     {
     id: 'atm11',
-    name: 'Minecraft - All The Mods 11 (Modded)',
+    name: 'All The Mods 11 (Modded)',
+    platform: 'Minecraft',
     address: 'atm11.coxford.net',
     // TODO: the Minecraft version ATM11 0.6.0-beta runs on. Only used as the
     // badge's fallback while the server is unreachable; 0.6.0-beta is the
@@ -129,7 +136,8 @@ const servers = [
   //
   // {
   //   id: 'beamng',
-  //   name: 'BeamNG - Multiplayer (Modded)',
+  //   name: 'Multiplayer (Modded)',
+  //   platform: 'BeamNG',
   //   game: 'beamng',
   //   address: 'beamng.coxford.net',
   //   description: 'BeamNG.drive multiplayer over BeamMP.',

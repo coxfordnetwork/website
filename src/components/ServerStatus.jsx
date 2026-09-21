@@ -9,7 +9,7 @@ import StatusBadge from './StatusBadge'
 const MASK = '***'
 
 /**
- * Every card carries the same things in the same places — name, version, IP,
+ * Every card carries the same things in the same places — name, platform, version, IP,
  * blurb, See more — whether the server is vanilla, runs a
  * pack we build, runs someone else's, or doesn't exist yet. Pack downloads live
  * on the server's own doc page, so one card can't end up taller or busier than
@@ -37,6 +37,9 @@ function ServerCard({ server }) {
               server.name
             )}
           </h3>
+          {/* platform then version, same pill either way: what it runs on,
+              then which build of it. */}
+          {server.platform && <span className="tw-badge tw-badge-ghost">{server.platform}</span>}
           {version && <span className="tw-badge tw-badge-ghost">{version}</span>}
         </div>
         <StatusBadge status={status} />
