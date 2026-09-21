@@ -32,7 +32,7 @@
 const servers = [
   {
     id: 'creative',
-    name: 'Coxford Network (Vanilla)',
+    name: 'Minecraft - Coxford Network (Vanilla)',
     address: 'mc.coxford.net',
     version: '1.8-26.3',
     description: 'survival, creative, parkour, and tnt run',
@@ -47,8 +47,20 @@ const servers = [
     ],
   },
   {
+    id: 'beta173',
+    name: 'Minecraft - Beta 1.7.3 (Vanilla)',
+    address: 'beta.coxford.net',
+    version: 'Beta 1.7.3',
+    description: 'Classic Survival Minecraft (with quality of life enhancements)',
+    docs: '/docs/servers/beta173/',
+    status: 'planned',
+    // No instances on purpose: b1.7.3 predates Modrinth, Fabric and the mods/
+    // folder, and its mods are patched into minecraft.jar, which no pack format
+    // can express. The page walks through the manual Prism setup instead.
+  },
+    {
     id: 'atm11',
-    name: 'Modded Survival ATM11',
+    name: 'Minecraft - All The Mods 11 (Modded)',
     address: 'atm11.coxford.net',
     // TODO: the Minecraft version ATM11 0.6.0-beta runs on. Only used as the
     // badge's fallback while the server is unreachable; 0.6.0-beta is the
@@ -71,20 +83,8 @@ const servers = [
     ],
   },
   {
-    id: 'beta173',
-    name: 'Beta 1.7.3',
-    address: 'beta.coxford.net',
-    version: 'b1.7.3',
-    description: 'the old one — era-appropriate, working skins, nothing built after 2011.',
-    docs: '/docs/servers/beta173/',
-    status: 'planned',
-    // No instances on purpose: b1.7.3 predates Modrinth, Fabric and the mods/
-    // folder, and its mods are patched into minecraft.jar, which no pack format
-    // can express. The page walks through the manual Prism setup instead.
-  },
-  {
     id: 'beamng',
-    name: 'BeamNG',
+    name: 'BeamNG - Multiplayer (Modded)',
     game: 'beamng',
     address: 'beamng.coxford.net',
     description: 'BeamNG.drive multiplayer over BeamMP.',
@@ -94,7 +94,7 @@ const servers = [
       {
         id: 'beammp',
         name: 'BeamMP launcher',
-        blurb: 'Required. Patches BeamNG.drive for multiplayer and handles joining. You need the game on Steam first.',
+        blurb: 'Required! Patches BeamNG.drive for multiplayer (fyi, you need the game on Steam first).',
         external: {
           url: 'https://beammp.com/',
           download: 'https://beammp.com/installer/BeamMP_Installer.zip',
