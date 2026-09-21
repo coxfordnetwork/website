@@ -51,10 +51,17 @@ const servers = [
     docs: '/docs/servers/creative/',
     instances: [
       {
-        id: 'creative-preset',
-        name: 'Shader preset',
-        blurb: 'Optional — the server is vanilla and plain Minecraft joins fine. Iris and Sodium with Complementary Unbound, on out of the box.',
-        modpackId: 'creative-preset',
+        id: 'basically-vanilla',
+        name: 'BasicallyVanilla',
+        blurb: 'Optional — nothing is required client-side, plain Minecraft joins fine. This is the setup we use.',
+        // Copy-and-paste into Prism, like the other instances. No `links` yet;
+        // add a Modrinth entry here if the pack is ever published there.
+        copyOnly: true,
+        copyLabel: 'Copy instance link',
+        external: {
+          url: 'https://github.com/coxfordnetwork/modpacks/tree/BasicallyVanilla',
+          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/BasicallyVanilla.zip',
+        },
       },
     ],
   },
