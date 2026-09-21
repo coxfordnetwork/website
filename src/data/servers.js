@@ -58,7 +58,7 @@ const servers = [
     name: 'Minecraft - Beta 1.7.3 (Vanilla)',
     address: 'beta.coxford.net',
     version: 'Beta 1.7.3',
-    description: 'Classic Survival Minecraft (with quality of life enhancements)',
+    description: '',
     docs: '/docs/servers/beta173/',
     // Not 'minecraft', so the card skips the live ping. Not a quirk of ours:
     // b1.7.3 answers the pre-2013 server-list ping, which mcsrvstat.us and every
