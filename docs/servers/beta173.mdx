@@ -15,20 +15,35 @@ without anything on your end.
 
 <Address server={server} />
 
-## Joining
+## Install
 
-1. Copy the instance link below.
-2. In **Prism Launcher**: *Add Instance → Import → From zip*, paste the link, **OK**.
-3. Launch it once, then *Multiplayer → Add Server* and paste the address above.
+Copy the link, paste it into Prism. Three clicks.
 
 <InstanceTable serverId="beta173" />
 
-That's the whole setup. The instance pins Beta 1.7.3 and already has ModLoader, WorldEdit and the
-compatibility fixes patched in, so there is nothing else to install and no Java to pick.
+**1. Add Instance**, top-left.
 
-Import it, don't unzip it. This is a **MultiMC-format instance**, not a `.mrpack` — Prism and MultiMC
-read it, the Modrinth App does not. There is no `.mrpack` version and there can't be: Beta 1.7.3 mods are
-patched straight into `minecraft.jar`, which no modern pack format can describe.
+![Prism Launcher's main window, with the Add Instance button highlighted in the top-left corner](/img/prism/1-add-instance.png)
 
-The address needs no port. Beta 1.7.3 ignores SRV records and always assumes the default port, so this
+**2. Import**, in the left column.
+
+![The New Instance window, with Import selected in the left-hand list of sources](/img/prism/2-import.png)
+
+**3. Paste the link** into *Local file or link to a direct download*, then **OK**.
+
+![The Import pane with the pack URL pasted into the direct-download field and the instance name filled in automatically](/img/prism/3-paste-link.png)
+
+Prism downloads it and builds the instance. Launch it, then *Multiplayer → Add Server* and paste the
+address above — no port.
+
+## Notes
+
+The instance pins Beta 1.7.3 and already has ModLoader, WorldEdit and the compatibility fixes patched in.
+Nothing else to install, no Java version to pick.
+
+Import it, don't unzip it. This is a **MultiMC-format instance**, not a `.mrpack` — the third screenshot
+lists everything Prism accepts, and that's the line it matches. There is no `.mrpack` version and there
+can't be: Beta 1.7.3 mods are patched straight into `minecraft.jar`, which no modern pack format describes.
+
+The address needs no port because Beta 1.7.3 ignores SRV records and always assumes the default, so this
 server is the one that owns it.
