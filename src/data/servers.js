@@ -8,8 +8,8 @@
  * Fields:
  * - platform:   the badge before the version — 'Minecraft', 'BeamNG'. It says
  *               what the thing runs on, so the name doesn't have to: the card
- *               reads `Minecraft` `26.2`  Coxford Network (Vanilla), not
- *               "Minecraft - Coxford Network".
+ *               reads `Minecraft` `26.2`  Coxford MC, not the old
+ *               "Minecraft - Coxford Network (Vanilla)".
  * - game:       kept for the (currently disabled) live status check; see
  *               LIVE_STATUS in utils/serverStatus.js. Nothing is pinged today,
  *               so this only documents what a server is.
@@ -43,7 +43,7 @@
 const servers = [
   {
     id: 'creative',
-    name: 'Coxford Network (Vanilla)',
+    name: 'Coxford MC',
     platform: 'Minecraft',
     address: 'mc.coxford.net',
     version: '1.8-26.3',
@@ -60,7 +60,7 @@ const servers = [
   },
   {
     id: 'beta173',
-    name: 'Beta 1.7.3 (Vanilla)',
+    name: 'BetaCraft',
     platform: 'Minecraft',
     address: 'beta.coxford.net',
     version: 'Beta 1.7.3',
@@ -91,7 +91,7 @@ const servers = [
   },
     {
     id: 'atm11',
-    name: 'All The Mods 11 (Modded)',
+    name: 'All the Mods 11',
     platform: 'Minecraft',
     address: 'atm11.coxford.net',
     // The Minecraft version, not the pack's — 0.6.0-beta is the pack and lives
