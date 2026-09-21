@@ -94,10 +94,10 @@ const servers = [
     name: 'All The Mods 11 (Modded)',
     platform: 'Minecraft',
     address: 'atm11.coxford.net',
-    // TODO: the Minecraft version ATM11 0.6.0-beta runs on. Only used as the
-    // badge's fallback while the server is unreachable; 0.6.0-beta is the
-    // pack's version and lives on the instance below.
-    version: null,
+    // The Minecraft version, not the pack's — 0.6.0-beta is the pack and lives
+    // on the instance below. Matches the NeoForge build the server launches
+    // (26.1.2.94, in infra/servers/atm11.conf).
+    version: '26.1.2',
     description: 'all the mods are installed! jk, that would be impossible. it is just the modpack name.',
     docs: '/docs/servers/atm11/',
     instances: [
