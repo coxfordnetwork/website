@@ -60,7 +60,7 @@ const servers = [
   },
   {
     id: 'beta173',
-    name: 'BetaCraft',
+    name: 'Nostalgia',
     platform: 'Minecraft',
     address: 'beta.coxford.net',
     version: 'Beta 1.7.3',
