@@ -30,9 +30,11 @@
  *                   a pack someone else publishes; the row offers that link.
  *               Add `copyOnly: true` (with an optional `copyLabel`) when the file
  *               is only useful pasted into a launcher rather than downloaded — a
- *               MultiMC/Prism instance zip. The row then shows one copy button
- *               instead of the split Download menu, so it never offers a .mrpack
- *               or .zip entry that would not actually work.
+ *               MultiMC/Prism instance zip, or a CurseForge pack. The row then
+ *               shows a copy button instead of the split Download menu, so it
+ *               never offers a .mrpack or .zip entry that would not work.
+ *               `links: [{ label, href }]` adds entries beside it (the pack's
+ *               own page, say); with none, the copy button stands alone.
  */
 const servers = [
   {
@@ -96,6 +98,18 @@ const servers = [
         id: 'atm11',
         name: 'All the Mods 11',
         blurb: 'Required, on exactly this version — anything else is refused on connect.',
+        // Same flow as the beta instance: copy the link, paste it into Prism's
+        // importer. Prism downloads a pasted URL and detects the format from
+        // what is inside — manifest.json here, since this is a CurseForge pack.
+        // A "Download" button would just hand people a zip to sit in Downloads.
+        copyOnly: true,
+        copyLabel: 'Copy instance link',
+        links: [
+          {
+            label: 'Open the CurseForge page',
+            href: 'https://www.curseforge.com/minecraft/modpacks/all-the-mods-11',
+          },
+        ],
         external: {
           version: '0.6.0-beta',
           url: 'https://www.curseforge.com/minecraft/modpacks/all-the-mods-11',

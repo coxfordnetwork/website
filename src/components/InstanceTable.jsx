@@ -48,13 +48,13 @@ function CopyAction({ text, label, onDone }) {
 }
 
 /** A primary button that copies to the clipboard and confirms in place. */
-function CopyButton({ text, label }) {
+function CopyButton({ text, label, className }) {
   const [copied, setCopied] = useState(false)
 
   return (
     <button
       type="button"
-      className="tw-btn tw-btn-sm !tw-btn-primary tw-whitespace-nowrap"
+      className={clsx('tw-btn tw-btn-sm !tw-btn-primary tw-whitespace-nowrap', className)}
       onClick={() => {
         navigator.clipboard.writeText(text).then(() => {
           setCopied(true)
@@ -137,6 +137,8 @@ function InstanceRow({ instance, minecraft }) {
   const primaryUrl = mrpackUrl || zipUrl
   const version = release?.tag_name || external?.version || null
 
+  const extraLinks = instance.links || []
+
   const actions = [
     mrpackUrl && { key: 'mrpack', label: 'Download .mrpack (Modrinth)', href: mrpackUrl },
     zipUrl && { key: 'zip', label: 'Download .zip', href: zipUrl },
@@ -166,12 +168,57 @@ function InstanceRow({ instance, minecraft }) {
           </span>
         )}
 
-        {/* copyOnly: the file is a MultiMC/Prism instance zip, only useful
-            pasted into the launcher's importer. A "Download" button would hand
-            people a zip that nothing opens by double-clicking, and there is no
-            .mrpack to list beside it. One button, no menu. */}
-        {primaryUrl && instance.copyOnly && (
+        {/* copyOnly: the file is only useful pasted into a launcher's importer
+            (Prism takes a URL and detects the format). A "Download" button would
+            hand people a zip nothing opens by double-clicking. `links` adds
+            anything else worth reaching — the pack's own page, say — so the row
+            never offers a format that would not actually work. */}
+        {primaryUrl && instance.copyOnly && !extraLinks.length && (
           <CopyButton text={primaryUrl} label={instance.copyLabel || 'Copy link'} />
+        )}
+
+        {primaryUrl && instance.copyOnly && extraLinks.length > 0 && (
+          <>
+            <div className="tw-join">
+              <CopyButton
+                text={primaryUrl}
+                label={instance.copyLabel || 'Copy link'}
+                className="tw-join-item"
+              />
+              <button
+                type="button"
+                className="tw-btn tw-btn-sm !tw-btn-primary tw-join-item tw-px-2"
+                aria-haspopup="menu"
+                aria-expanded={open}
+                aria-label={`More links for ${instance.name}`}
+                onClick={() => setOpen((v) => !v)}
+              >
+                <Chevron />
+              </button>
+            </div>
+
+            {open && (
+              <div
+                role="menu"
+                className={clsx(
+                  'tw-absolute tw-right-0 tw-top-full tw-mt-1 tw-z-20 tw-min-w-[15rem]',
+                  'tw-flex tw-flex-col tw-py-1 tw-rounded-xl tw-border tw-border-solid tw-border-base-300 tw-bg-base-100',
+                )}
+              >
+                {extraLinks.map((l) => (
+                  <Link
+                    key={l.href}
+                    role="menuitem"
+                    to={l.href}
+                    className="tw-px-3 tw-py-2 tw-text-sm tw-text-base-content hover:tw-bg-base-200 !tw-no-underline"
+                    onClick={() => setOpen(false)}
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </>
         )}
 
         {primaryUrl && !instance.copyOnly && (
