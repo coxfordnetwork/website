@@ -70,28 +70,30 @@ const servers = [
     name: 'Nostalgia',
     platform: 'Minecraft',
     address: 'beta.coxford.net',
-    version: 'Beta 1.7.3',
+    version: 'Beta 1.8.1',
     description: '',
     docs: '/docs/servers/beta173/',
     // Not 'minecraft', so the card skips the live ping. Not a quirk of ours:
-    // b1.7.3 answers the pre-2013 server-list ping, which mcsrvstat.us and every
+    // beta-era servers answer the pre-2013 server-list ping, which mcsrvstat.us and every
     // other status API do not speak, so a live server would be reported offline
     // forever. The card lists the address instead.
     game: 'minecraft-legacy',
     instances: [
       {
         id: 'beta173-nostalgia',
-        name: 'Beta 1.7.3 - Nostalgia',
-        blurb: 'Required. ModLoader, WorldEdit and the b1.7.3 compatibility fixes, already patched in.',
+        name: 'Nostalgia',
+        blurb: 'Required. WorldEdit and the b1.8.1 compatibility fixes, already patched in.',
         // A MultiMC/Prism instance, NOT a .mrpack, and there is no .mrpack to
-        // offer: b1.7.3 mods are patched into minecraft.jar, which no modern
+        // offer: beta-era mods are patched into minecraft.jar, which no modern
         // pack format can express. Prism imports it from a pasted link, so the
-        // row offers the link and nothing else.
+        // row offers the link and nothing else. Prism names the instance
+        // 'Beta-1.8.1-Coxford' on import, from the instance.cfg inside the zip.
         copyOnly: true,
         copyLabel: 'Copy instance link',
         external: {
-          url: 'https://github.com/coxfordnetwork/modpacks/tree/Beta-1.7.3-Nostalgia',
-          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/Beta-1.7.3-Nostalgia.zip',
+          version: 'Beta 1.8.1',
+          url: 'https://github.com/coxfordnetwork/modpacks/tree/Beta-Nostalgia',
+          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/Beta-Nostalgia.zip',
         },
       },
     ],
