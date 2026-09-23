@@ -113,10 +113,10 @@ const servers = [
         id: 'atm11',
         name: 'All the Mods 11',
         blurb: 'Required, on exactly this version — anything else is refused on connect.',
-        // Same flow as the beta instance: copy the link, paste it into Prism's
-        // importer. Prism downloads a pasted URL and detects the format from
-        // what is inside — manifest.json here, since this is a CurseForge pack.
-        // A "Download" button would just hand people a zip to sit in Downloads.
+        // Same flow as the other instances: copy the link, paste it into Prism's
+        // importer. This is our own MultiMC/Prism instance, not the CurseForge
+        // pack -- nobody has to touch a storefront to join. The CurseForge page
+        // stays in `links` for the changelog and mod list.
         copyOnly: true,
         copyLabel: 'Copy instance link',
         links: [
@@ -127,9 +127,8 @@ const servers = [
         ],
         external: {
           version: '0.6.0-beta',
-          url: 'https://www.curseforge.com/minecraft/modpacks/all-the-mods-11',
-          // project 1148445, file 8700161 = 0.6.0-beta
-          download: 'https://www.curseforge.com/api/v1/mods/1148445/files/8700161/download',
+          url: 'https://github.com/coxfordnetwork/modpacks/tree/AllTheMods11',
+          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/AllTheMods11.zip',
         },
       },
     ],
