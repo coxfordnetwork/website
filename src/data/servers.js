@@ -86,8 +86,7 @@ const servers = [
         // A MultiMC/Prism instance, NOT a .mrpack, and there is no .mrpack to
         // offer: beta-era mods are patched into minecraft.jar, which no modern
         // pack format can express. Prism imports it from a pasted link, so the
-        // row offers the link and nothing else. Prism names the instance
-        // 'Beta-1.8.1-Coxford' on import, from the instance.cfg inside the zip.
+        // row offers the link and nothing else.
         copyOnly: true,
         copyLabel: 'Copy instance link',
         external: {

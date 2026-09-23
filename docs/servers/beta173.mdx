@@ -10,14 +10,13 @@ export const server = servers.find((s) => s.id === 'beta173')
 
 # Nostalgia
 
-Classic survival, with a few quality-of-life fixes. Skins are handled server-side, so they work without
-anything on your end.
+Classic survival, with a few quality-of-life fixes.
 
 <Address server={server} />
 
-## Install
+## Setup
 
-Copy the link, paste it into Prism.
+Four steps. Copy the link, import it, then turn on the legacy fixes so skins load.
 
 <InstanceTable serverId="beta173" />
 
@@ -27,9 +26,24 @@ Copy the link, paste it into Prism.
 
 **2. Click Import, paste the link**, then **OK**.
 
-![The Import pane of the New Instance window, with Import selected on the left and the pack link pasted into the direct-download field](/img/prism/3-paste-link.png)
+![The Import pane of the New Instance window, with Import selected on the left and the pack link pasted into the direct-download field](/img/prism/2-paste-link.png)
 
-Prism downloads the pack and builds the instance. Launch it, then *Multiplayer → Add Server* and paste the
-address above.
+**3. Select the instance, then Edit.**
 
-That's the whole setup — the instance already has everything the server expects.
+![The imported Beta-Nostalgia instance selected in Prism, with Edit highlighted in the right-hand sidebar](/img/prism/3-edit.png)
+
+**4. Settings → Tweaks**, and tick **Legacy Tweaks** and **Enable online fixes (experimental)**.
+
+![The instance's Settings page on the Tweaks tab, with Legacy Tweaks and Enable online fixes both checked](/img/prism/4-tweaks.png)
+
+Launch it, then *Multiplayer → Add Server* and paste the address above.
+
+## Why step 4 matters
+
+Skip it and the game still runs, but everyone is a default skin. A beta client fetches
+skins from Mojang endpoints that were switched off years ago, and it has no idea they're
+gone — it just quietly gets nothing back. Prism's legacy fixes repoint those requests at
+something that still answers, which is the whole reason skins work here at all.
+
+Nothing on the server can do this for you. That part is client-side, so every player has
+to tick those two boxes.
