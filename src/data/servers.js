@@ -63,6 +63,19 @@ const servers = [
           download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/BasicallyVanilla.zip',
         },
       },
+      {
+        id: 'basically-console',
+        name: 'BasicallyConsole',
+        blurb: 'Optional — BasicallyVanilla played like the Xbox 360 edition: controller support, the old textures and sounds, console settings. Built for a TV.',
+        // Same mod list as BasicallyVanilla plus Controlify, on the same
+        // Minecraft version, so it joins exactly like BasicallyVanilla does.
+        copyOnly: true,
+        copyLabel: 'Copy instance link',
+        external: {
+          url: 'https://github.com/coxfordnetwork/modpacks/tree/BasicallyConsole',
+          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/BasicallyConsole.zip',
+        },
+      },
     ],
   },
   {
