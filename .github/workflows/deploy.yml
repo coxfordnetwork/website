@@ -10,7 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-# One deploy at a time; a newer push cancels an in-flight one.
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -20,21 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      # Version comes from "packageManager" in package.json.
       - uses: pnpm/action-setup@v4
-
       - uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
-
       - run: pnpm install --frozen-lockfile
-
       - run: pnpm run build
-
       - uses: actions/configure-pages@v5
-
       - uses: actions/upload-pages-artifact@v3
         with:
           path: build
