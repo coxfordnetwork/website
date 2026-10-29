@@ -77,9 +77,9 @@ const config = {
             <a class="launcher-link" href="https://prismlauncher.org/download/" target="_blank" rel="noopener noreferrer" title="Get Prism Launcher" aria-label="Get Prism Launcher">
               <img src="/img/logos/prismlauncher.svg" alt="Prism Launcher" width="20" height="20" />
             </a>
-            <a class="launcher-link" href="https://modrinth.com/app" target="_blank" rel="noopener noreferrer" title="Get the Modrinth App" aria-label="Get the Modrinth App">
-              <img src="/img/logos/modrinth.svg" alt="Modrinth App" width="20" height="20" />
-            </a>
+<!--            <a class="launcher-link" href="https://modrinth.com/app" target="_blank" rel="noopener noreferrer" title="Get the Modrinth App" aria-label="Get the Modrinth App">-->
+<!--              <img src="/img/logos/modrinth.svg" alt="Modrinth App" width="20" height="20" />-->
+<!--            </a>-->
           </span>`,
         },
       ],
