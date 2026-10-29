@@ -47,33 +47,33 @@ const servers = [
     platform: 'Minecraft',
     address: 'mc.coxford.net',
     version: '1.8-26.3',
-    description: 'survival, creative, parkour, and tnt run',
+    description: 'survival, minigames, and good vibes',
     docs: '/docs/servers/creative/',
     instances: [
       {
-        id: 'basically-vanilla',
-        name: 'BasicallyVanilla',
-        blurb: 'Optional — nothing is required client-side, plain Minecraft joins fine. This is the setup we use.',
+        id: 'vanilla++',
+        name: 'Vanilla++',
+        blurb: 'Vanilla Minecraft, but with some quality-of-life enhancements.',
         // Copy-and-paste into Prism, like the other instances. No `links` yet;
         // add a Modrinth entry here if the pack is ever published there.
         copyOnly: true,
         copyLabel: 'Copy instance link',
         external: {
-          url: 'https://github.com/coxfordnetwork/modpacks/tree/BasicallyVanilla',
-          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/BasicallyVanilla.zip',
+          url: 'https://github.com/coxfordnetwork/modpacks/tree/Vanilla++',
+          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/Vanilla++.zip',
         },
       },
       {
-        id: 'basically-console',
-        name: 'BasicallyConsole',
-        blurb: 'Optional — BasicallyVanilla played like the Xbox 360 edition: controller support, the old textures and sounds, console settings. Built for a TV.',
+        id: 'consolerevamp',
+        name: 'ConsoleRevamp',
+        blurb: 'Java Edition, but with an Xbox 360 vibe. controller support, old textures and sounds, console settings. Built for a TV.',
         // Same mod list as BasicallyVanilla plus Controlify, on the same
         // Minecraft version, so it joins exactly like BasicallyVanilla does.
         copyOnly: true,
         copyLabel: 'Copy instance link',
         external: {
-          url: 'https://github.com/coxfordnetwork/modpacks/tree/BasicallyConsole',
-          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/BasicallyConsole.zip',
+          url: 'https://github.com/coxfordnetwork/modpacks/tree/ConsoleRevamp',
+          download: 'https://github.com/coxfordnetwork/modpacks/archive/refs/heads/ConsoleRevamp.zip',
         },
       },
     ],
