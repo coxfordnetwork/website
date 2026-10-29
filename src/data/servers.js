@@ -69,6 +69,7 @@ const servers = [
         blurb: 'Java Edition, but with an Xbox 360 vibe. controller support, old textures and sounds, console settings. Built for a TV.',
         // Same mod list as BasicallyVanilla plus Controlify, on the same
         // Minecraft version, so it joins exactly like BasicallyVanilla does.
+
         copyOnly: true,
         copyLabel: 'Copy instance link',
         external: {
